@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/css/page.css">
+  <link rel="icon" href="../assets/img/logo_256.png"  type="image/png">
+  <title>iD: rules</title>
+</head>
+
+<body>
+  <section class="column">
+    <div class="container-1c">
+      <img class="small" src="../assets/img/logo_540.png"/>
+    </div>
+      <div class="container-1c">
+        <h1 class="animatedtitle">the rules</h1>
+      </div>
+      <div class="container-2c">
+      <div class="box">
+        <h2>the game</h2>
+        <p>When you open the game you will see a red button. You have to click on it to start the audio context
+				(the browser will ask you to enable the microphone). Then you will see <span class="t_blue">stars</span>
+				and <span class="t_blue">asteroids</span>. You need to choose one star and one asteroid. The star will be
+				your <span class="t_blue">position</span> and the asteroid will be the <span class="t_blue">sound source</span>.
+				I know, sound doesn't travel through space. Don't worry... Your imagination is limitless!</p>
+      </div>
+      <div class="box">
+        <iframe class="full" src="../p5js/gravitytest?sn=3?an=5.html" /></iframe>
+      </div>
+      <div class="box">
+        <h2>the board</h2>
+        <p>The screen is the game board. After you touches the red button the game gives you a short time to get
+				ready and then <span class="t_blue">stars</span> and <span class="t_blue">asteroids</span> start moving.
+				You have to pay attention to your selected star and asteroid. The recording starts and ends automaticaly.
+				If you see your asteroid in the screen you have to make your sound, when it escapes from it you have to
+			 	stay quiet.</p>
+      </div>
+      <div class="box">
+        <h2>your sound</h2>
+        <p>You can sing, play a musical instrument or use whatever object makes sound. You can choose between
+				two types of sounds: continous (a pitch) or granular (repeated short sounds). If you decide to sing you can't
+				change the vowel or syllable during a game round. May be the Doppler effect
+				<a href="../p5js/infectodoppler.html">example</a> can help you to understand what to do (tap the red button).</p>
+      </div>
+      <div class="box">
+        <h2>your interpretation</h2>
+        <p>During a game round you have to modulate your sound with the animation movement. Remember, if your
+				<span class="t_blue">asteroid</span> gets closer to your <span class="t_blue">star</span> you need to increase
+				your sound frequency (pitch get higher or sound repeats faster) and if it moves away you need to do the
+				oposite, decrease your sound frequency (pitch get lower or sound repeats slower). Be careful! The key is
+				the speed with which your <span class="t_blue">asteroid</span> moves with respect to your <span class="t_blue">
+				star</span> and not the speed of it on the screen (again, the example may help).</p>
+      </div>
+      <div class="box">
+        <iframe class="full" src="../p5js/infectodoppler.html" /></iframe>
+      </div>
+      <div class="box">
+        <h2>send your sample</h2>
+        <p>The recording will stop automaticaly (it lasts between 6795 and 10976 miliseconds). Your browser will
+				trigger the download of a sound file. My idea is to create a large <span class="t_blue">sounds population</span>
+				so you can play again and again. There are different levels!<br>
+				You can send me your files to my <a href="mailto:rodrigovalla@protonmail.ch">mailbox</a> or directly through
+				<a href="https://telegram.me/rvalla" target="_blank">telegram</a>. You decide which files you send, this site
+				doesn't collect any of your data. If you have problems with the game you can check the
+				<a href="../doc/index.html">documentation</a> or email me.</p>
+      </div>
+      <div class="box">
+				<h2>play now</h2>
+				<p>That's all! You are ready to play. All depends on your courage. You can start with the easier levels or the
+				more hard ones. You can try as many times as you want. If you read the game's url carefuly you may discover
+				how to configure your own levels.</p>
+				<p><a href="../p5js/playerguide.html?sn=1&an=1&gc=12&mic=false"><button class="button small">easy</button></a>
+				<a href="../p5js/playerguide.html?sn=3&an=1&gc=8&mic=false"><button class="button small">medium</button></a>
+				<a href="../p5js/playerguide.html?sn=5&an=3&gc=6&mic=false"><button class="button small">hard</button></a>
+				<a href="../p5js/playerguide.html?sn=5&an=8&gc=8&mic=false"><button class="button small">extreme</button></a></p>
+      </div>
+      </div>
+      <div class="container-1c">
+        <hr class="hidden" />
+        <hr class="hidden" />
+        <hr class="hidden" />
+        <hr class="hidden" />
+        <hr class="hidden" />
+        <hr class="hidden" />
+        <hr class="blue" />
+        <hr class="hidden" />
+        <hr class="yellow" />
+        <hr class="hidden" />
+        <hr class="hidden" />
+        <hr class="red" />
+        <hr class="hidden" />
+        <hr class="hidden" />
+        <hr class="hidden" />
+      </div>
+</html>

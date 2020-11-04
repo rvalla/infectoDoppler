@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/css/page.css">
+  <link rel="icon" href="../assets/img/logo_256.png"  type="image/png">
+  <title>iD: reglas</title>
+</head>
+
+<body>
+  <section class="column">
+    <div class="container-1c">
+      <img class="small" src="../assets/img/logo_540.png"/>
+    </div>
+      <div class="container-1c">
+        <h1 class="animatedtitle">las reglas</h1>
+      </div>
+      <div class="container-2c">
+      <div class="box">
+        <h2>el juego</h2>
+        <p>Cuando abras el juego vas a ver un botón rojo. Tenés que tocarlo para arrancar el audio del navegador (te
+        va a pedir permiso para usar el micrófono). Vas a ver <span class="t_blue">estrellas</span> y
+        <span class="t_blue">asteroides</span>. Vos tenés que elegir una estrella y un asteroide. La estrella es tu
+        <span class="t_blue">posición</span> y el asteroide es la <span class="t_blue">fuente sonora</span>. Ya sé,
+        el sonido no se transmite en el espacio. No te preocupes... ¡Tu imaginación no tiene límites!</p>
+      </div>
+      <div class="box">
+        <iframe class="full" src="../p5js/gravitytest?sn=3?an=5.html" /></iframe>
+      </div>
+      <div class="box">
+        <h2>el tablero</h2>
+        <p>La pantalla es el tablero. En cuanto toques otra vez el botón rojo para empezar el juego, después de
+				una pausa breve para darte un poco de tiempo, <span class="t_blue">estrellas</span> y
+				<span class="t_blue">asteroides</span> van a empezar a moverse. Vos tenés que prestar especial atención a
+				los que elegiste. La grabación comienza y termina automáticamente. Siempre que el asteroide esté a la vista
+				tenés que hacer tu sonido, si se escapa de los bordes tenés que hacer silencio.</p>
+      </div>
+      <div class="box">
+        <h2>tu sonido</h2>
+        <p>Podés cantar, usar instrumentos musicales e incluso cualquier objeto que suene. Podés usar dos tipos
+        de sonidos. Sonidos continuos (una altura sin cortes) y sonidos granulares (sonidos cortos que se repiten
+        indefinidamente). Si decidís cantar tenés que hacerlo con la misma sílaba durante toda la muestra (puede ser
+        sólo una vocal si te decidís por un sonido continuo o una sílaba más percusiva si preferís un sonido granular).
+        Podés darte una mejor idea con el <a href="../p5js/infectodoppler.html">ejemplo</a> del efecto Doppler (usá
+        el botón rojo).</p>
+      </div>
+      <div class="box">
+        <h2>tu interpretación</h2>
+        <p>Cuando inicies el juego tenés que modular tu sonido con el movimiento de la animación. Recordá que si tu
+        <span class="t_blue">asteroide</span> se acerca a tu <span class="t_blue">estrella</span> la frecuencia aumenta
+        (el sonido se hace más agudo o se repite más rápido) y si se aleja, disminuye (el sonido se hace más grave o
+        se repite más lento). ¡Cuidado! Lo que importa es la velocidad con que el <span class="t_blue">asteroide</span> se
+        acerca o se aleja de tu <span class="t_blue">estrella</span> y no la velocidad con la que se mueve en la
+        pantalla (otra vez te puede ayudar el ejemplo).</p>
+      </div>
+      <div class="box">
+        <iframe class="full" src="../p5js/infectodoppler.html" /></iframe>
+      </div>
+      <div class="box">
+        <h2>enviá tu muestra</h2>
+        <p>La grabación se va a detener automáticamente (dura entre 6795 y 10976 milisegundos). El navegador te va a
+        ofrecer descargar el archivo. La idea es construir grandes <span class="t_blue">poblaciones de sonidos</span>
+        así que si tenés ganas jugá con distintos sonidos muchas veces. ¡Y en distintos niveles!<br>
+        Podés hacerme llegar los archivos por <a href="mailto:rodrigovalla@protonmail.ch">mail</a> o mandármelos por
+        <a href="https://telegram.me/rvalla" target="_blank">telegram</a>. Vos mandás los archivos, podés escucharlos
+        y decidir no hacerlo. Si tenés problemas para jugar visitá la <a href="../doc/index.html">documentación</a> o
+        escribime.</p>
+      </div>
+      <div class="box">
+				<h2>jugá</h2>
+        <p>¡Ya está! Podés empezar a jugar. Todo depende de tu audacia. Podés empezar por lo fácil o lo difícil.
+        Podés intentar todas las veces que quieras. Si lees la barra de direcciones del navegador vas a descubrir
+        cómo configurar tus propios niveles.</p>
+        <p><a href="../p5js/playerguide.html?sn=1&an=1&gc=12&mic=false"><button class="button small">fácil</button></a>
+        <a href="../p5js/playerguide.html?sn=3&an=1&gc=8&mic=false"><button class="button small">moderado</button></a>
+        <a href="../p5js/playerguide.html?sn=5&an=3&gc=6&mic=false"><button class="button small">difícil</button></a>
+        <a href="../p5js/playerguide.html?sn=5&an=8&gc=8&mic=false"><button class="button small">extremo</button></a></p>
+      </div>
+      </div>
+      <div class="container-1c">
+        <hr class="hidden" />
+        <hr class="hidden" />
+        <hr class="hidden" />
+        <hr class="hidden" />
+        <hr class="hidden" />
+        <hr class="hidden" />
+        <hr class="blue" />
+        <hr class="hidden" />
+        <hr class="yellow" />
+        <hr class="hidden" />
+        <hr class="hidden" />
+        <hr class="red" />
+        <hr class="hidden" />
+        <hr class="hidden" />
+        <hr class="hidden" />
+      </div>
+</html>
