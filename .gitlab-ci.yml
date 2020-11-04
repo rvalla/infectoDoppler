@@ -8,4 +8,7 @@ pages:
     paths:
     - public
   only:
-  - master
+    ref:
+      - branches
+    changes:
+      - public/*
