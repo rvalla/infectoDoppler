@@ -38,4 +38,4 @@ class CheckPopulation():
 				"- rvalla.github.io/infectoDoppler --\n" + \
 				"- github.com/rvalla/infectoDoppler -\n" + \
 				"-- Tool for sounds files checking  -\n" + \
-				"---------- Version: 0.90 -----------\n"
+				"---------- Version: 0.95 -----------\n"

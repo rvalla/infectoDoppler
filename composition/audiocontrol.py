@@ -45,5 +45,5 @@ class AudioControl:
 				"- rvalla.github.io/infectoDoppler --\n" + \
 				"- github.com/rvalla/infectoDoppler -\n" + \
 				"---------- Audio Control -----------\n" + \
-				"---------- Version: 0.90 -----------\n" + \
+				"---------- Version: 0.95 -----------\n" + \
 				"-- Gain factor: " + str(self.gainfactor) + "\n"

@@ -1,0 +1,22 @@
+{
+  "pPath": "populations/g4g_2020/",
+  "vPath": "versions/testing/",
+  "name": "testing",
+	"sampleRate": 44100,
+	"duration": 50,
+	"channels": 4,
+	"gainControl": "polynomial",
+	"gainFactorAt0": 0.25,
+	"gainFactorAt1": 1.0,
+	"population": 40,
+	"days": 50,
+	"daySize": 44100,
+	"casesZero": 1,
+	"baseContacts": 4,
+  "infectionThreshold": 0.15,
+	"immunityPeriod": 15,
+	"response": true,
+  "responseStart": 3,
+	"actionsPeriod": 14,
+	"isolationFactor": 0.65
+}

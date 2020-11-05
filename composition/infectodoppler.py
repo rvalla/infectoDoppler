@@ -37,6 +37,8 @@ class infectoDoppler():
 	vr = Virus()
 	rp = Response()
 	vz = Visualization()
+	infectedset = set()
+	recoveredset = set()
 	infectiondata = None
 	epidemic = None
 	infectedsounds = None
@@ -67,8 +69,7 @@ class infectoDoppler():
 		print("-- Simulation is finished!       ", end="\n")
 		print("-- Time needed for building this version: " + \
 				infectoDoppler.getSimulationTime(infectoDoppler.starttime, tm.time()))
-		infectoDoppler.saveEpidemicData()
-		infectoDoppler.saveInfectedSoundsData()
+		infectoDoppler.saveSimulationData()
 		infectoDoppler.saveVersion()
 		infectoDoppler.plotData()
 		print("-- Plotting version's data...", end="\r")
@@ -79,13 +80,12 @@ class infectoDoppler():
 
 	#Merging audio data from infected doppler objects
 	def mergeInfections(d):
-		for o in range(infectoDoppler.population):
-			if infectoDoppler.dp[o].isinfected == True:
-				firstsample = d * infectoDoppler.daysize
-				for s in range(infectoDoppler.daysize):
-					if infectoDoppler.dp[o].isinfected == True:
-						infectoDoppler.sumAmplitude(infectoDoppler.dp[o], firstsample + s)
-						infectoDoppler.evolInfection(infectoDoppler.dp[o], d)
+		for s in range(infectoDoppler.daysize):
+			firstsample = d * infectoDoppler.daysize
+			for o in infectoDoppler.infectedset:
+				infectoDoppler.sumAmplitude(infectoDoppler.dp[o], firstsample + s)
+				infectoDoppler.evolInfection(infectoDoppler.dp[o], d)
+			infectoDoppler.updateInfectedSet()
 
 	#Adding doppler object sample to sound stream
 	def sumAmplitude(doppler, s):
@@ -100,10 +100,14 @@ class infectoDoppler():
 
 	#Simulating an epidemic day
 	def simulateDay(d):
-		for i in range(len(infectoDoppler.dp)):
-			if infectoDoppler.dp[i].isinfected == True:
-				infectoDoppler.spread(infectoDoppler.dp[i], d)
+		actualinfected = infectoDoppler.infectedset.copy()
+		for o in actualinfected:
+			infectoDoppler.spread(infectoDoppler.dp[o], d)
 		infectoDoppler.rp.checkResponse(d)
+
+	def updateInfectedSet():
+		infectoDoppler.infectedset = infectoDoppler.infectedset.difference(infectoDoppler.recoveredset)
+		infectoDoppler.recoveredset = set()
 
 	#Executing the virus spread
 	def spread(idoppler, d):
@@ -126,6 +130,7 @@ class infectoDoppler():
 		infectoDoppler.infectiondata[1] += 1
 		infectoDoppler.infectiondata[2] += 1
 		infectoDoppler.infectiondata[doppler.dchannel + 3] += 1
+		infectoDoppler.infectedset.add(doppler.dnumber)
 
 	def evolInfection(doppler, d):
 		doppler.infectioncourse += 1
@@ -140,6 +145,8 @@ class infectoDoppler():
 		doppler.infectioncourse = 0
 		infectoDoppler.infectiondata[2] -= 1
 		infectoDoppler.infectiondata[doppler.dchannel + 3] -= 1
+		infectoDoppler.recoveredset.add(doppler.dnumber)
+		infectoDoppler.saveInfection(doppler)
 
 	def startInfections(c, p):
 		l = rd.sample(range(0, p - 1), c)
@@ -157,7 +164,6 @@ class infectoDoppler():
 		infectoDoppler.infectedratio = infectoDoppler.infectiondata[2] / infectoDoppler.population
 
 	def setConfig(data):
-		print("-- Loading configuration...", end="\n")
 		infectoDoppler.ppath = data["pPath"]
 		infectoDoppler.vpath = data["vPath"]
 		infectoDoppler.vname = data["name"]
@@ -182,12 +188,16 @@ class infectoDoppler():
 		infectoDoppler.ac.gainfactorat1 = data["gainFactorAt1"]
 		infectoDoppler.filelist = os.listdir(data["pPath"])
 		infectoDoppler.cleanFileList(infectoDoppler.filelist)
-		infectoDoppler.population = len(infectoDoppler.filelist)
+		infectoDoppler.filelist.sort()
+		if data["population"] > 0 and data["population"] <= len(infectoDoppler.filelist):
+			infectoDoppler.population = data["population"]
+		else:
+			infectoDoppler.population = len(infectoDoppler.filelist)
 
 	def buildPopulation(filelist):
-		for f in range(len(filelist)):
+		for f in range(infectoDoppler.population):
 			print("-- Loading sound object " + str(f), end="\r")
-			infectoDoppler.dp.append(Doppler(f, infectoDoppler.channels, infectoDoppler.ppath + filelist[f]))
+			infectoDoppler.dp.append(Doppler(f, infectoDoppler.channels, infectoDoppler.ppath, filelist[f]))
 		print("-- Sound objects loaded!          ", end="\n")
 
 	def saveFirstDay():
@@ -199,6 +209,12 @@ class infectoDoppler():
 		infectoDoppler.infectiondata[len(infectoDoppler.infectiondata) - 1] = infectoDoppler.infectedratio
 		row = pd.DataFrame([infectoDoppler.infectiondata[:]], columns = infectoDoppler.epidemic.columns)
 		infectoDoppler.epidemic = pd.concat([infectoDoppler.epidemic, row])
+
+	def saveInfection(doppler):
+		row = pd.DataFrame([[doppler.dnumber, doppler.name, doppler.infectionnumber, doppler.dchannel, \
+							doppler.contactfactor, doppler.infectiondate, doppler.enddate, doppler.size]], \
+							columns=infectoDoppler.infectedsounds.columns)
+		infectoDoppler.infectedsounds = pd.concat([infectoDoppler.infectedsounds, row])
 
 	def saveVersion():
 		filename = infectoDoppler.vpath + "audio/" + infectoDoppler.vname
@@ -226,9 +242,11 @@ class infectoDoppler():
 		l.append(0.0)
 		return l
 
-	def saveEpidemicData():
+	def saveSimulationData():
 		infectoDoppler.epidemic.set_index("Day", inplace = True)
-		infectoDoppler.epidemic.to_csv(infectoDoppler.vpath + infectoDoppler.vname + ".csv")
+		infectoDoppler.epidemic.to_csv(infectoDoppler.vpath + "data/" + infectoDoppler.vname + "_ep.csv")
+		infectoDoppler.infectedsounds.set_index("Number", inplace = True)
+		infectoDoppler.infectedsounds.to_csv(infectoDoppler.vpath + "data/" + infectoDoppler.vname + "_inf.csv")
 
 	def getInfectedSoundsDataframe():
 		columns = ["Number", "Name", "Infections", "Channel", "CF", "I start", "I end", "Size"]
@@ -272,7 +290,7 @@ class infectoDoppler():
 				"- rvalla.github.io/infectoDoppler --\n" + \
 				"- github.com/rvalla/infectoDoppler -\n" + \
 				"---------- infectoDoppler ----------\n" + \
-				"---------- Version: 0.90 -----------\n" + \
+				"---------- Version: 0.95 -----------\n" + \
 				"-- Version name: " + str(infectoDoppler.vname) + "\n" + \
 				"-- Duration in seconds: " + str(infectoDoppler.duration) + "\n" + \
 				"-- Channels: " + str(infectoDoppler.channels) + "\n" + \

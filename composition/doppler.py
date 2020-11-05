@@ -7,7 +7,7 @@ warnings.simplefilter("ignore", wf.WavFileWarning)
 class Doppler:
 	"Each of the sound objects to build an InfectoDoppler version"
 
-	def __init__(self, n, vchannels, filename):
+	def __init__(self, n, vchannels, fpath, filename):
 		self.name = filename
 		self.dnumber = n
 		self.infectionnumber = 0
@@ -17,9 +17,9 @@ class Doppler:
 		self.isinfected = False
 		self.wasinfected = False
 		self.infectioncourse = 0
-		self.infectionDate = 0
+		self.infectiondate = 0
 		self.enddate = 0
-		self.samplerate, self.audiodata = wf.read(filename)
+		self.samplerate, self.audiodata = wf.read(fpath + filename)
 		self.size = self.audiodata.size
 
 	def getDayContactsCount(self, bc, ifactor):
@@ -32,7 +32,7 @@ class Doppler:
 				"- rvalla.github.io/infectoDoppler --\n" + \
 				"- github.com/rvalla/infectoDoppler -\n" + \
 				"----------- Sound object -----------\n" + \
-				"---------- Version: 0.90 -----------\n" + \
+				"---------- Version: 0.95 -----------\n" + \
 				"-- Channel: " + self.dchannel + "\n" + \
 				"-- Contact factor: " + str(self.contactfactor) + "\n" + \
 				"-- Has immunity?: " + str(self.hasimmunity) + "\n" + \

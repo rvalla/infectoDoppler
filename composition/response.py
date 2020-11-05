@@ -28,7 +28,7 @@ class Response:
 				"- rvalla.github.io/infectoDoppler --\n" + \
 				"- github.com/rvalla/infectoDoppler -\n" + \
 				"------------- Response -------------\n" + \
-				"---------- Version: 0.90 -----------\n" + \
+				"---------- Version: 0.95 -----------\n" + \
 				"-- Is response active?: " + str(Response.responseisactive) + "\n" + \
 				"-- Response start day: " + str(Response.responsestart) + "\n" + \
 				"-- Actions period: " + str(Response.actionsperiod) + "\n" + \

@@ -11,6 +11,6 @@ class Virus:
 				"- rvalla.github.io/infectoDoppler --\n" + \
 				"- github.com/rvalla/infectoDoppler -\n" + \
 				"-------------- Virus ---------------\n" + \
-				"---------- Version: 0.90 -----------\n" + \
+				"---------- Version: 0.95 -----------\n" + \
 				"-- Infection threshold: " + str(self.infectionThreshold) + "\n" + \
 				"-- Immunity period: " + str(self.immunityPeriod) + "\n"

@@ -6,5 +6,7 @@
 **infectoDoppler** has a website to collect sounds for its *populations* and share the final official
 *epidemics* versions. The site includes all the instructions needed to play the game.  
 
+Visit **infectoDoppler** site at [rodrigovalla.gitlab.io/infectodoppler](https://rodrigovalla.gitlab.io/infectodoppler).  
+
 Feel free to contact me by [mail](mailto:rodrigovalla@protonmail.ch) or reach me in
 [telegram](https://t.me/rvalla) or [mastodon](https://fosstodon.org/@rvalla).

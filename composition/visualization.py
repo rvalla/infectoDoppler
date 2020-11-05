@@ -22,7 +22,7 @@ class Visualization:
 	widthbig = 2.5
 	widthnormal = 2.0
 	widthsmall = 1.5
-	plotcolors = [(0.86, 0.86, 0.24), (0.86, 0.24, 0.24), (0.08, 0.24, 0.86), (0.86, 0.08, 0.86), (0.08, 0.86, 0.86)]
+	plotcolors = [(0.86, 0.08, 0.86), (0.86, 0.86, 0.24), (0.08, 0.24, 0.86), (0.86, 0.24, 0.24), (0.08, 0.86, 0.86)]
 
 	def gridsAndBackground():
 		plt.grid(which='both', axis='both')
@@ -64,10 +64,10 @@ class Visualization:
 		for c in range(audiodata.shape[0]):
 			key = "Infected in " + str(c)
 			infections = sdata[key].plot(kind="line", linewidth=Visualization.widthsmall, \
-									color=Visualization.plotcolors[(c+3)%len(Visualization.plotcolors)], label=key, \
+									color=Visualization.plotcolors[(c+4)%len(Visualization.plotcolors)], label=key, \
 									ax=infections)
 		infections = sdata["Infected"].plot(kind="line", linewidth=Visualization.widthbig, \
-								color=Visualization.plotcolors[2], label="Total infected", ax=infections)
+								color=Visualization.plotcolors[3], label="Total infected", ax=infections)
 		if titles == True:
 			infections.set_title("infected sounds curve", fontsize=Visualization.subtitlesize, \
 							fontname=Visualization.defaultfont, color=Visualization.fontcolor)
@@ -83,7 +83,7 @@ class Visualization:
 		audio = plt.subplot2grid((2, 1), (1, 0))
 		time = np.linspace(0, audiodata.shape[1] / srate, num=audiodata.shape[1])
 		for c in range(audiodata.shape[0]):
-			plt.plot(time, audiodata[c], label="channel " + str(c), \
+			plt.plot(time, audiodata[c], label="channel " + str(c), alpha=1, \
 					linewidth=Visualization.widthsmall, color=Visualization.plotcolors[c%len(Visualization.plotcolors)])
 		if titles == True:
 			plt.title("epidemic signal result", fontsize=Visualization.subtitlesize, fontname=Visualization.defaultfont, \
@@ -106,4 +106,4 @@ class Visualization:
 				"- rvalla.github.io/infectoDoppler --\n" + \
 				"- github.com/rvalla/infectoDoppler -\n" + \
 				"--------- Visualization ------------\n" + \
-				"--------- Version: 0.90 ------------\n"
+				"--------- Version: 0.95 ------------\n"
