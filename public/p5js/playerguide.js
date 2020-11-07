@@ -98,6 +98,7 @@ function processTriggers() {
       ac.save();
       print("Saving audio...");
       state = 0;
+			gameTime = getGameTime();
       background(25, 20, 20, 255);
     } catch {
       wait += 250;
@@ -120,8 +121,12 @@ function getButtonR() {
   }
 }
 
+function getGameTime(){
+	return 6795 + round(random(4181));
+}
+
 function startConfig(config) {
-  gameTime = 6795 + round(random(4181));
+  gameTime = getGameTime();
   let number = Number(config.sn);
   if (typeof(number) === "number" && Number.isInteger(number)) {
     sn = number;
