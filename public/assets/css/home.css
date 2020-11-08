@@ -191,8 +191,11 @@ img {
 	margin-right: auto;
   margin-bottom: auto;
   margin-top: auto;
-	width: 20vh;
  	padding: 1vh;
+}
+
+img.logo {
+	width: 20vh;
 }
 
 a {
