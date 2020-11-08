@@ -19,12 +19,6 @@ class infectoDoppler():
 	filelist = None
 	vname = None
 	starttime = 0
-	samplerate = None
-	duration = 0 #Version duration in seconds
-	channels = 0
-	audiodata = None
-	audiolength = 0 #Output audio length in samples
-	audiomax = 0.0 #Here we save the maximum level of the audio signal
 	population = 0 #Sounds population size
 	infectedratio = 0.0 #Infected population ratio
 	days = 0 #Duration for the simulation in days
@@ -34,6 +28,11 @@ class infectoDoppler():
 	response = False
 	dp = []
 	ac = AudioControl()
+	samplerate = None
+	channels = 0
+	audiodata = None
+	audiolength = 0 #Output audio length in samples
+	audiomax = 0.0 #Here we save the maximum level of the audio signal
 	vr = Virus()
 	rp = Response()
 	vz = Visualization()
@@ -167,11 +166,6 @@ class infectoDoppler():
 		infectoDoppler.ppath = data["pPath"]
 		infectoDoppler.vpath = data["vPath"]
 		infectoDoppler.vname = data["name"]
-		infectoDoppler.samplerate = data["sampleRate"]
-		infectoDoppler.duration = data["duration"]
-		infectoDoppler.channels = data["channels"]
-		infectoDoppler.audiolength = infectoDoppler.duration * infectoDoppler.samplerate
-		infectoDoppler.audiodata = np.zeros((infectoDoppler.channels, infectoDoppler.audiolength), dtype="float64")
 		infectoDoppler.days = data["days"]
 		infectoDoppler.daysize = data["daySize"]
 		infectoDoppler.caseszero = data["casesZero"]
@@ -183,6 +177,10 @@ class infectoDoppler():
 		infectoDoppler.rp.responsestart = data["responseStart"]
 		infectoDoppler.rp.actionsperiod = data["actionsPeriod"]
 		infectoDoppler.rp.isolationfactor = data["isolationFactor"]
+		infectoDoppler.samplerate = data["sampleRate"]
+		infectoDoppler.channels = data["channels"]
+		infectoDoppler.audiolength = infectoDoppler.days * infectoDoppler.daysize
+		infectoDoppler.audiodata = np.zeros((infectoDoppler.channels, infectoDoppler.audiolength), dtype="float32")
 		infectoDoppler.ac.gaincontrol = data["gainControl"]
 		infectoDoppler.ac.gainfactorat0 = data["gainFactorAt0"]
 		infectoDoppler.ac.gainfactorat1 = data["gainFactorAt1"]
@@ -285,14 +283,14 @@ class infectoDoppler():
 		return ms
 
 	def __str__(self):
-		return "------------------------------------\n" + \
-				"------- infectoD o p p l e r -------\n" + \
-				"- rvalla.github.io/infectoDoppler --\n" + \
-				"- github.com/rvalla/infectoDoppler -\n" + \
-				"---------- infectoDoppler ----------\n" + \
-				"---------- Version: 0.95 -----------\n" + \
+		return "------------------------------------------\n" + \
+				"---------- infectoD o p p l e r ----------\n" + \
+				"- rodrigovalla.gitlab.io/infectodoppler --\n" + \
+				"- gitlab.com/rodrigovalla/infectodoppler -\n" + \
+				"------------ infectoDoppler --------------\n" + \
+				"------------- Version: 0.95 --------------\n" + \
 				"-- Version name: " + str(infectoDoppler.vname) + "\n" + \
-				"-- Duration in seconds: " + str(infectoDoppler.duration) + "\n" + \
 				"-- Channels: " + str(infectoDoppler.channels) + "\n" + \
 				"-- Population: " + str(infectoDoppler.population) + "\n" + \
-				"-- Days: " + str(infectoDoppler.days)
+				"-- Days: " + str(infectoDoppler.days) + "\n" + \
+				"-- Day size: " + str(infectoDoppler.daysize) + "\n"

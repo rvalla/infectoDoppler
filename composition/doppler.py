@@ -27,12 +27,12 @@ class Doppler:
 		return round(n)
 
 	def __str__(self):
-		return "------------------------------------\n" + \
-				"------- infectoD o p p l e r -------\n" + \
-				"- rvalla.github.io/infectoDoppler --\n" + \
-				"- github.com/rvalla/infectoDoppler -\n" + \
-				"----------- Sound object -----------\n" + \
-				"---------- Version: 0.95 -----------\n" + \
+		return "------------------------------------------\n" + \
+				"---------- infectoD o p p l e r ----------\n" + \
+				"- rodrigovalla.gitlab.io/infectodoppler --\n" + \
+				"- gitlab.com/rodrigovalla/infectodoppler -\n" + \
+				"---------------- Doppler -----------------\n" + \
+				"------------- Version: 0.95 --------------\n" + \
 				"-- Channel: " + self.dchannel + "\n" + \
 				"-- Contact factor: " + str(self.contactfactor) + "\n" + \
 				"-- Has immunity?: " + str(self.hasimmunity) + "\n" + \

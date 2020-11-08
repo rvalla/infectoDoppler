@@ -101,9 +101,9 @@ class Visualization:
 		plt.savefig(sfolder + sname + ".png", facecolor=figure.get_facecolor())
 
 	def __str__(self):
-		return "------------------------------------\n" + \
-				"------- infectoD o p p l e r -------\n" + \
-				"- rvalla.github.io/infectoDoppler --\n" + \
-				"- github.com/rvalla/infectoDoppler -\n" + \
-				"--------- Visualization ------------\n" + \
-				"--------- Version: 0.95 ------------\n"
+		return "------------------------------------------\n" + \
+				"---------- infectoD o p p l e r ----------\n" + \
+				"- rodrigovalla.gitlab.io/infectodoppler --\n" + \
+				"- gitlab.com/rodrigovalla/infectodoppler -\n" + \
+				"------------- Visualization --------------\n" + \
+				"------------- Version: 0.95 --------------\n"

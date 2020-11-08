@@ -6,11 +6,11 @@ class Virus:
 		self.immunityperiod = 360
 
 	def __str__(self):
-		return "------------------------------------\n" + \
-				"------- infectoD o p p l e r -------\n" + \
-				"- rvalla.github.io/infectoDoppler --\n" + \
-				"- github.com/rvalla/infectoDoppler -\n" + \
-				"-------------- Virus ---------------\n" + \
-				"---------- Version: 0.95 -----------\n" + \
+		return "------------------------------------------\n" + \
+				"---------- infectoD o p p l e r ----------\n" + \
+				"- rodrigovalla.gitlab.io/infectodoppler --\n" + \
+				"- gitlab.com/rodrigovalla/infectodoppler -\n" + \
+				"----------------- Virus ------------------\n" + \
+				"------------- Version: 0.95 --------------\n" + \
 				"-- Infection threshold: " + str(self.infectionThreshold) + "\n" + \
 				"-- Immunity period: " + str(self.immunityPeriod) + "\n"

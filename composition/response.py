@@ -23,12 +23,12 @@ class Response:
 		self.responseisactive = status
 
 	def __str__(self):
-		return "------------------------------------\n" + \
-				"------- infectoD o p p l e r -------\n" + \
-				"- rvalla.github.io/infectoDoppler --\n" + \
-				"- github.com/rvalla/infectoDoppler -\n" + \
-				"------------- Response -------------\n" + \
-				"---------- Version: 0.95 -----------\n" + \
+		return "------------------------------------------\n" + \
+				"---------- infectoD o p p l e r ----------\n" + \
+				"- rodrigovalla.gitlab.io/infectodoppler --\n" + \
+				"- gitlab.com/rodrigovalla/infectodoppler -\n" + \
+				"--------------- Response -----------------\n" + \
+				"------------- Version: 0.95 --------------\n" + \
 				"-- Is response active?: " + str(Response.responseisactive) + "\n" + \
 				"-- Response start day: " + str(Response.responsestart) + "\n" + \
 				"-- Actions period: " + str(Response.actionsperiod) + "\n" + \

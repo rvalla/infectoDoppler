@@ -40,10 +40,10 @@ class AudioControl:
 		self.polynomialC = self.gainfactorat0
 
 	def __str__(self):
-		return "------------------------------------\n" + \
-				"------- infectoD o p p l e r -------\n" + \
-				"- rvalla.github.io/infectoDoppler --\n" + \
-				"- github.com/rvalla/infectoDoppler -\n" + \
-				"---------- Audio Control -----------\n" + \
-				"---------- Version: 0.95 -----------\n" + \
+		return "------------------------------------------\n" + \
+				"---------- infectoD o p p l e r ----------\n" + \
+				"- rodrigovalla.gitlab.io/infectodoppler --\n" + \
+				"- gitlab.com/rodrigovalla/infectodoppler -\n" + \
+				"------------- Audio Control --------------\n" + \
+				"------------- Version: 0.95 --------------\n" + \
 				"-- Gain factor: " + str(self.gainfactor) + "\n"
