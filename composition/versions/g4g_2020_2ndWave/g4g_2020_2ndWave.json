@@ -1,0 +1,21 @@
+{
+	"pPath": "populations/g4g_2020/",
+  "vPath": "versions/g4g_2020_2ndWave2/",
+  "name": "g4g_2020_2ndWave2",
+	"sampleRate": 44100,
+	"channels": 4,
+	"gainControl": "polynomial",
+	"gainFactorAt0": 0.35,
+	"gainFactorAt1": 1.0,
+	"population": 0,
+	"days": 144,
+	"daySize": 22050,
+	"casesZero": 1,
+	"modeContacts": 3,
+  "infectionThreshold": 0.06,
+	"immunityPeriod": 34,
+	"response": true,
+  "responseStart": 5,
+	"actionsPeriod": 90,
+	"isolationFactor": 0.725
+}
