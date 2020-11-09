@@ -24,7 +24,7 @@ class infectoDoppler():
 	days = 0 #Duration for the simulation in days
 	daysize = 0 #Day duration in audio samples
 	caseszero = 0 #Number of infected objects for the first day
-	basecontacts = 0 #Default number of contacts
+	modecontacts = 0 #Default number of contacts
 	response = False
 	dp = []
 	ac = AudioControl()
@@ -70,7 +70,6 @@ class infectoDoppler():
 				infectoDoppler.getSimulationTime(infectoDoppler.starttime, tm.time()))
 		infectoDoppler.saveSimulationData()
 		infectoDoppler.saveVersion()
-		infectoDoppler.plotData()
 		print("-- Plotting version's data...", end="\r")
 		infectoDoppler.vz.simulationVisualization(infectoDoppler.vname, infectoDoppler.vpath + "charts/", \
 		 					infectoDoppler.epidemic, infectoDoppler.audiodata, infectoDoppler.samplerate, \
@@ -79,8 +78,8 @@ class infectoDoppler():
 
 	#Merging audio data from infected doppler objects
 	def mergeInfections(d):
+		firstsample = d * infectoDoppler.daysize
 		for s in range(infectoDoppler.daysize):
-			firstsample = d * infectoDoppler.daysize
 			for o in infectoDoppler.infectedset:
 				infectoDoppler.sumAmplitude(infectoDoppler.dp[o], firstsample + s)
 				infectoDoppler.evolInfection(infectoDoppler.dp[o], d)
@@ -110,7 +109,7 @@ class infectoDoppler():
 
 	#Executing the virus spread
 	def spread(idoppler, d):
-		n = idoppler.getDayContactsCount(infectoDoppler.basecontacts, infectoDoppler.rp.getIsolationFactor())
+		n = idoppler.getDayContactsCount(infectoDoppler.modecontacts, infectoDoppler.rp.getIsolationFactor())
 		c = rd.sample(range(0, infectoDoppler.population - 1), n)
 		for i in range(len(c)):
 			infectoDoppler.decideInfection(infectoDoppler.dp[c[i]], d)
@@ -169,7 +168,7 @@ class infectoDoppler():
 		infectoDoppler.days = data["days"]
 		infectoDoppler.daysize = data["daySize"]
 		infectoDoppler.caseszero = data["casesZero"]
-		infectoDoppler.basecontacts = data["baseContacts"]
+		infectoDoppler.modecontacts = data["modeContacts"]
 		infectoDoppler.vr.infectionthreshold = data["infectionThreshold"]
 		infectoDoppler.vr.immunityperiod = data["immunityPeriod"]
 		infectoDoppler.response = data["response"]
@@ -218,9 +217,6 @@ class infectoDoppler():
 		filename = infectoDoppler.vpath + "audio/" + infectoDoppler.vname
 		infectoDoppler.ac.processAndSave(filename, infectoDoppler.samplerate, infectoDoppler.audiodata, \
 										infectoDoppler.audiomax)
-
-	def plotData():
-		return 1
 
 	def cleanFileList(filelist):
 		f = 0

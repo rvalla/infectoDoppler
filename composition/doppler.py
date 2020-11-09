@@ -23,7 +23,7 @@ class Doppler:
 		self.size = self.audiodata.size
 
 	def getDayContactsCount(self, bc, ifactor):
-		n = rd.triangular(0, bc, round(bc/2)) * self.contactfactor * ifactor
+		n = rd.triangular(0, 2*bc, bc) * self.contactfactor * ifactor
 		return round(n)
 
 	def __str__(self):

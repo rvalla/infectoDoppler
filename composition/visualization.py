@@ -100,6 +100,43 @@ class Visualization:
 		plt.tight_layout(rect=[0, 0, 1, 1])
 		plt.savefig(sfolder + sname + ".png", facecolor=figure.get_facecolor())
 
+	def plotEpidemic(sefl, w, h, sname, sfolder, sdata, audiodata, population, days):
+		figure = plt.figure(num=None, figsize=(w, h), dpi=Visualization.imageResolution, \
+							facecolor=Visualization.backgroundFigure, edgecolor='k')
+		infections = plt.subplot2grid((2, 2), (0, 0), colspan=2)
+		for c in range(audiodata.shape[0]):
+			key = "Infected in " + str(c)
+			infections = sdata[key].plot(kind="line", linewidth=Visualization.widthsmall, \
+									color=Visualization.plotcolors[(c+4)%len(Visualization.plotcolors)], label=key, \
+									ax=infections)
+		infections = sdata["Infected"].plot(kind="line", linewidth=Visualization.widthbig, \
+								color=Visualization.plotcolors[3], label="Total infected", ax=infections)
+		infections.set_title("")
+		infections.set_ylabel("")
+		infections.set_xlabel("")
+		infections.set_xlim(0, days - 1)
+		Visualization.background()
+		infectedratio = plt.subplot2grid((2, 2), (1, 0))
+		infectedratio = sdata["Infected ratio"].plot(kind="line", linewidth=Visualization.widthbig, \
+								color=Visualization.plotcolors[3], label="Infected ratio", ax=infectedratio)
+		infectedratio.set_title("")
+		infectedratio.set_ylabel("")
+		infectedratio.set_xlabel("")
+		infectedratio.set_xlim(0, days - 1)
+		infectedratio.set_ylim(0, 1)
+		Visualization.background()
+		total = plt.subplot2grid((2, 2), (1, 1))
+		total = sdata["Total infected"].plot(kind="line", linewidth=Visualization.widthbig, \
+								color=Visualization.plotcolors[3], label="Infected ratio", ax=total)
+		total.set_title("")
+		total.set_ylabel("")
+		total.set_xlabel("")
+		total.set_xlim(0, days - 1)
+		total.set_ylim(0, population)
+		Visualization.background()
+		plt.tight_layout(rect=[0, 0, 1, 1])
+		plt.savefig(sfolder + sname + "_test.png", facecolor=figure.get_facecolor())
+
 	def __str__(self):
 		return "------------------------------------------\n" + \
 				"---------- infectoD o p p l e r ----------\n" + \
