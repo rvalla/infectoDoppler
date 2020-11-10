@@ -5,6 +5,7 @@
 
 **infectoDoppler** is about the spread of an infectious desease in a *sounds population*. Here is the
 software which loads the audio files and merge them into an epidemic musical outbreak.  
+Futhermore, you can find the official *populations* and *versions* too.  
 
 Visit **infectoDoppler** site at [rodrigovalla.gitlab.io/infectodoppler](https://rodrigovalla.gitlab.io/infectodoppler).  
 
