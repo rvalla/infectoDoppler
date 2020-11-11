@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/css/page.css">
+  <link rel="icon" href="../assets/img/logo_256.png"  type="image/png">
+  <title>iD: composition</title>
+</head>
+
+<body>
+  <section class="column">
+    <div class="container-1c">
+      <img class="small" src="../assets/img/logo_540.png"/>
+    </div>
+      <div class="container-1c">
+        <h1 class="animatedtitle">iD: composition</h1>
+      </div>
+      <div class="container-2c">
+      <div class="box">
+        <h2>epidemic model</h2>
+        <p>To build a version of <span class="t_red">infecto Doppler</span> the composition software simulates an
+				outbreak. Some sounds from a population get infected. The infected sounds are merged with an amplitude which
+				depends on the actual percentage of population which is infected. To run the software you need python3 with
+				some common libraries (numpy, pandas and scipy).</p>
+      </div>
+      <div class="box">
+        <img src="../assets/img/v_g4g_Basal_pt.png" />
+      </div>
+			<div class="box">
+        <h2>the json file</h2>
+        <p>To build a version you need to instantiate <i>infectoDoppler(config.json)</i> passing the configuration
+				.json file to the constructor. That file contains all the parameters you can set. The first json fields are:
+				pPath (the population location), vPath (the output data, charts and audio location) and vName (the name
+				for the version).</p>
+      </div>
+			<div class="box">
+        <h2>audio control</h2>
+        <p>Then you can set some audio related configurations using the following fields: sampleRate (the output files
+				samplerate), channels (the number of output channels), gainControl (you can set this to linear or polynomial -
+				the last one use a quadratic function), gainFactorAt0 (the change for the amplitude when 0% of the population
+				is infected) and gainFactorAt1 (the change for the amplitude when 100% of the population is infected).</p>
+      </div>
+			<div class="box">
+        <h2>the outbreak</h2>
+        <p>You can set the simulation general parameters with the fields: population (if it is 0 the software loads all
+				files in pPath, if it is a positive integer it loads that number of files), days (the number of days to simulate),
+				daySize (the number of audio samples in a day), casesZero (number of infected files in day 1), modeContacts
+				(the mode for random triangular distribution of number of contacts for an infected sound during a simulation
+				day - 0 < mode < 2.mode).</p>
+      </div>
+			<div class="box">
+        <h2>the virus</h2>
+        <p>You can set virus characteristics with infectionThreshold (the probability of an infected sound infecting
+				others in certain day) and immunityPeriod (the time in days during a sound can't be infected after getting
+				recovered). Note that the infectionThreshold tend to be a small number because you have to consider that a
+				sound is infectious during its whole duration.</p>
+			</div>
+			<div class="box">
+        <h2>the response</h2>
+        <p>You can control social response first setting the field response (true or false). When it is set true the
+				software apply a restriction to sounds circulation (each sound reduce its contacts by the isolationFacto).
+				You set the response configuration usinge the following fields: responseStart (the simulation day in which the
+				restriction starts), actionsPeriod (the duration in days for the restriction) and isolationFactor (a float
+				which determines how much the circulation is reduced - 0 <= f <= 1).</p>
+			</div>
+			<div class="box">
+        <h2>only the outbreak</h2>
+        <p>As merging the audio data is a heavy computational task you can use <i>epidemicTest(config.json)</i>
+				instead. The software runs the same epidemic simulation loading the configuration from the same json files
+				and export data and charts very quickly.</p>
+				<p class="t_left"><a href="index.html"><button class="button small">back</button></a></p>
+			</div>
+      </div>
+      <div class="container-1c">
+        <hr class="hidden" />
+        <hr class="hidden" />
+        <hr class="hidden" />
+        <hr class="hidden" />
+        <hr class="hidden" />
+        <hr class="hidden" />
+        <hr class="blue" />
+        <hr class="hidden" />
+        <hr class="yellow" />
+        <hr class="hidden" />
+        <hr class="hidden" />
+        <hr class="red" />
+        <hr class="hidden" />
+        <hr class="hidden" />
+        <hr class="hidden" />
+      </div>
+</html>

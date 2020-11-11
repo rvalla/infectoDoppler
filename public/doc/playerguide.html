@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/css/page.css">
+  <link rel="icon" href="../assets/img/logo_256.png"  type="image/png">
+  <title>iD: player guide</title>
+</head>
+
+<body>
+  <section class="column">
+    <div class="container-1c">
+      <img class="small" src="../assets/img/logo_540.png"/>
+    </div>
+      <div class="container-1c">
+        <h1 class="animatedtitle">iD: player guide</h1>
+      </div>
+      <div class="container-2c">
+      <div class="box">
+        <h2>simulation</h2>
+        <p>The players are guided by the animation while making their sounds. They have to modulate these sounds
+				applying to them the <span class="t_blue">Doppler effect</span> induced by the motion of a selected asteroid
+				and a star. The animation is based on the gravitational model from <a href="https://youtu.be/EpgB3cNhKPM"
+				target="_blank">The coding train</a>. It is very real for asteoids but much less gravitational for stars.</p>
+      </div>
+      <div class="box">
+        <iframe class="full" src="../p5js/gravitytest.html"></iframe>
+      </div>
+			<div class="box">
+        <h2>input level</h2>
+        <p>After the users give permission to access the microphone or their devices playerguide.js allows them
+				to adjust the input level. In case de <i>mic=false</i> parameter is passed, the script jumps this step. It is
+				possible to pass the input amplitude directly too using the <i>micamp=float</i> parameter (with 0 < f <= 1).</p>
+      </div>
+			<div class="box">
+        <h2>animation</h2>
+        <p>The number of stars and asteoroids can be set through url parameters too. You can use <i>sn=n</i> to define
+			 	number of stars and <i>an=n</i> to define the number of asteroids (n must be an integer). You can control the
+				power of the gravity field passing the gravitational constant with <i>gc=f</i>.</p>
+				<p class="t_left"><a href="index.html"><button class="button small">back</button></a></p>
+      </div>
+      </div>
+      <div class="container-1c">
+        <hr class="hidden" />
+        <hr class="hidden" />
+        <hr class="hidden" />
+        <hr class="hidden" />
+        <hr class="hidden" />
+        <hr class="hidden" />
+        <hr class="blue" />
+        <hr class="hidden" />
+        <hr class="yellow" />
+        <hr class="hidden" />
+        <hr class="hidden" />
+        <hr class="red" />
+        <hr class="hidden" />
+        <hr class="hidden" />
+        <hr class="hidden" />
+      </div>
+</html>
