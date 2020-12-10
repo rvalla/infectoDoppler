@@ -57,7 +57,6 @@ class gravity {
     let f = p5.Vector.sub(attractor.p, object.p);
     let dSq = constrain(f.magSq(), 20, 800);
     let mag = this.G * (object.m * attractor.m) / dSq;
-  //  if ()
     f.setMag(mag);
     object.update(f);
   }
