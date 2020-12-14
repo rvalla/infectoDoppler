@@ -95,13 +95,13 @@ h1.animatedtitle {
   }
 }
 
-.button {
+button {
   background-color: #c74d4a;
   font-family: "Trebuchet MS", sans-serif;
   font-size: 1.0em;
   float: center;
   border: none;
-  border-radius: 0.5vw;
+  border-radius: 4px;
   color: #191414;
   margin: 2px 2px;
   padding: 0.5em;
@@ -110,15 +110,19 @@ h1.animatedtitle {
   transition-duration: 0.4s;
 }
 
-.button:hover {
+button:hover {
   background-color: #3c8cdc;
 }
 
-.button.small {
+button:active {
+  background-color: #c74d4a;
+}
+
+button.small {
   width: 35%;
 }
 
-.button.big {
+button.big {
   width: 60%;
 }
 
@@ -239,7 +243,7 @@ iframe.video {
 
 audio {
 	display: block;
-	width: 90%;
+	width: 100%;
 	padding: 1vh;
 	transform: scale(0.9);
 }
