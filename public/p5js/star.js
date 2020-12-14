@@ -7,11 +7,10 @@ class star {
     this.isFixed = fix;
     if (this.isFixed === true) {
       this.p = createVector(width / 2, height / 2);
-      this.s = createVector(0, 0);
     } else {
       this.p = createVector(this.getCoordinate(width), this.getCoordinate(height));
-      this.s = this.getInitSpeed();
     }
+		this.s = createVector(0, 0);
     this.a = createVector(0, 0);
   }
 
@@ -25,8 +24,9 @@ class star {
     pop();
   }
 
-  update(f) {
-    this.s.set(p5.Vector.div(f, this.m));
+  update(a) {
+		this.a.set(a);
+    this.s.add(this.a);
     this.p.add(this.s);
   }
 
@@ -36,7 +36,6 @@ class star {
       this.s.set(0, 0);
     } else {
       this.p.set(this.getCoordinate(width), this.getCoordinate(height));
-      this.s.set(random(0.05), random(0.05));
     }
   }
 
@@ -56,19 +55,16 @@ class star {
   }
 
   getCoordinate(limit) {
-    let l = limit / 4;
-    return 1.5 * l + random(l);
+    let l = limit / 7;
+    return 3 * l + random(l);
   }
 
-  getInitSpeed() {
-    let speed = createVector(0, 0);
-    let s = random(0.25);
-    if (width < height) {
-      speed.set(s, s + random(0.25));
-    } else {
-      speed.set(s + random(0.25), s);
-    }
-    return speed;
+  setInitSpeed(center) {
+    let speed = p5.Vector.sub(this.p, center);
+    speed.rotate(HALF_PI);
+		let m = sqrt(this.a.mag() * speed.mag());
+		speed.setMag(m);
+	  this.s.set(speed);
   }
 
 }

@@ -19,7 +19,7 @@ function setup() {
 	wait = 250;
   buildButtons();
   g = new gravity(sn, an, gc, isFixed);
-  print("infectoDoppler player's guide v0.91");
+  print("infectoDoppler player's guide v0.95");
 }
 
 function draw() {

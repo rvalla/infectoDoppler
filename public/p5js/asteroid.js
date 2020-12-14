@@ -32,8 +32,8 @@ class asteroid {
     pop();
   }
 
-  update(f) {
-    this.a.set(p5.Vector.div(f, this.m));
+  update(a) {
+    this.a.set(a);
     this.s.add(this.a);
     this.p.add(this.s);
     this.getRotation(this.a, this.s);
@@ -73,7 +73,7 @@ class asteroid {
   }
 
   getCoordinate(limit) {
-    let l = limit / 8;
+    let l = limit / 5;
     return l + random(l) + this.getZone(l);
   }
 
@@ -81,7 +81,7 @@ class asteroid {
     if (random() < 0.5) {
       return 0;
     } else {
-      return 5 * l;
+      return 2 * l;
     }
   }
 
@@ -103,5 +103,10 @@ class asteroid {
     }
     return speed;
   }
+
+	setSpeed(x, y) {
+		this.s.set(p5.Vector.sub(createVector(x, y), this.p));
+		this.s.setMag(this.s.mag()/50);
+	}
 
 }

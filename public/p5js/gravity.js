@@ -5,6 +5,8 @@ class gravity {
     this.sn = sn;
     this.an = an;
     this.G = g;
+		this.C = createVector(width / 2, height / 2);
+		this.Cm = 0.25;
     this.stars = [];
     this.asteroids = [];
     this.isFixed = fix;
@@ -18,6 +20,8 @@ class gravity {
         this.stars.push(new star(true));
       } else {
         this.stars.push(new star(false));
+				this.getStarAcceleration(this.C, this.stars[i]);
+				this.stars[i].setInitSpeed(this.C);
       }
     }
   }
@@ -25,16 +29,16 @@ class gravity {
   buildAsteroids() {
     for (let i = 0; i < this.an; i ++) {
       if (this.isFixed === true) {
-        this.asteroids.push(new asteroid(7, 1, 0.1, true));
+        this.asteroids.push(new asteroid(7, 1, 0.5, true));
       } else {
-        this.asteroids.push(new asteroid(7, 1, 0.1, false));
+        this.asteroids.push(new asteroid(7, 1, 0.5, false));
       }
     }
   }
 
   display() {
     if (this.state != 0) {
-      this.getStarsAttractions();
+      this.getStarsAccelerations();
       this.getAsteroidsAttractions()
     }
     for (let i = 0; i < this.sn; i ++) {
@@ -45,37 +49,64 @@ class gravity {
     }
   }
 
-  getStarsAttractions() {
+  getStarsAccelerations() {
     for (let i = 0; i < this.sn; i ++) {
-      for (let s = 1; s < this.sn; s ++) {
-        this.getStarAttraction(this.stars[(i + s)%this.sn], this.stars[i]);
-      }
+			this.getStarAcceleration(this.C, this.stars[i]);
     }
   }
 
-  getStarAttraction(attractor, object) {
-    let f = p5.Vector.sub(attractor.p, object.p);
-    let dSq = constrain(f.magSq(), 20, 800);
-    let mag = this.G * (object.m * attractor.m) / dSq;
-    f.setMag(mag);
-    object.update(f);
+  getStarAcceleration(center, object) {
+    let a = p5.Vector.sub(center, object.p);
+    let dSq = constrain(a.magSq(), 20, 800);
+    let mag = this.G * this.Cm / dSq;
+    a.setMag(mag);
+		object.update(a);
   }
 
   getAsteroidsAttractions() {
     for (let a = 0; a < this.an; a ++) {
       for (let s = 0; s < this.sn; s ++) {
-        this.getAsteroidAttraction(this.stars[s], this.asteroids[a]);
+        this.getAsteroidAcceleration(this.stars[s], this.asteroids[a]);
+      }
+    }
+		for (let a = 0; a < this.an; a ++) {
+      for (let s = 1; s < this.an; s ++) {
+        this.getAsteroidAcceleration(this.asteroids[(a + s)%this.an], this.asteroids[a]);
       }
     }
   }
 
-  getAsteroidAttraction(attractor, object) {
-    let f = p5.Vector.sub(attractor.p, object.p);
-    let dSq = constrain(f.magSq(), 10, 500);
-    let mag = this.G * (object.m * attractor.m) / dSq;
-    f.setMag(mag);
-    object.update(f);
+  getAsteroidAcceleration(attractor, object) {
+    let a = p5.Vector.sub(attractor.p, object.p);
+    let dSq = constrain(a.magSq(), 0.01, 750);
+    let mag = this.G * attractor.m / dSq;
+    a.setMag(mag);
+    object.update(a);
   }
+
+	setAsteroidsSpeed(x, y) {
+		for (let i = 0; i < this.an; i ++) {
+      this.asteroids[i].setSpeed(x, y);
+    }
+	}
+
+	getStarPosition(n) {
+		return this.stars[n].p;
+	}
+
+	getAsteroidPosition(n) {
+		return this.asteroids[n].p;
+	}
+
+	isAsteroidInCanvas(n) {
+		if (this.asteroids[n].p.x > width || this.asteroids[n].p.x < 0) {
+			return false;
+		} else if (this.asteroids[n].p.y > height || this.asteroids[n].p.y < 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 
   play() {
     this.state = 1;
@@ -88,6 +119,8 @@ class gravity {
   reset() {
     for (let i = 0; i < this.sn; i ++) {
       this.stars[i].reset();
+			this.getStarAcceleration(this.C, this.stars[i]);
+			this.stars[i].setInitSpeed(this.C);
     }
     for (let i = 0; i < this.an; i ++) {
       this.asteroids[i].reset();

@@ -13,7 +13,7 @@ function setup() {
   b1 = new button(width / 3, height / 8, this.getButtonR(), color(220,60, 60), color(25, 20, 20, 10), "", color(0));
   b2 = new button(2 * width / 3, height / 8, this.getButtonR(), color(20, 60, 220), color(25, 20, 20, 10), "", color(0));
   g = new gravity(1, 1, 25, true);
-  print("infectoDoppler: example v.0.9");
+  print("infectoDoppler: example v.0.95");
 }
 
 function draw() {
@@ -37,9 +37,9 @@ function mousePressed() {
     if (b1.contains(mouseX, mouseY)) {
       switch (state) {
         case -1:
-          g.play();
           userStartAudio();
           da = new dopplerAudio(350, 6);
+					g.play();
           state = 0;
           break;
         case 0:

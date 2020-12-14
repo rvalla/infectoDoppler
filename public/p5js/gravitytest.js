@@ -12,7 +12,7 @@ function setup() {
   state = 0;
   lastclick = 0;
   g = new gravity(sn, an, gc, isFixed);
-  print("infectoDoppler gravity test: v0.9");
+  print("infectoDoppler gravity test: v0.95");
 }
 
 function draw() {
