@@ -7,7 +7,7 @@
 software which loads the audio files and merge them into an epidemic musical outbreak.  
 Futhermore, you can find the official *populations* and *versions* too.  
 
-Visit **infectoDoppler** site at [rodrigovalla.gitlab.io/infectodoppler](https://rodrigovalla.gitlab.io/infectodoppler).  
+Visit **infectoDoppler** site at [azarte.gitlab.io/infectodoppler](https://azarte.gitlab.io/infectodoppler/).  
 
 Feel free to contact me by [mail](mailto:rodrigovalla@protonmail.ch) or reach me in
 [telegram](https://t.me/rvalla) or [mastodon](https://fosstodon.org/@rvalla).

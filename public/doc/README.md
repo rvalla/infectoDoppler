@@ -9,7 +9,7 @@ during an epidemic outbreak.
 The *game* is written in [p5js](https://p5js.org) and the *simulation model* in [python3](python.org).
 Here I will host their documentation.  
 
-Visit **infectoDoppler** site at [rodrigovalla.gitlab.io/infectodoppler](https://rodrigovalla.gitlab.io/infectodoppler).  
+Visit **infectoDoppler** site at [azarte.gitlab.io/infectodoppler](https://azarte.gitlab.io/infectodoppler/).  
 
 Feel free to contact me by [mail](mailto:rodrigovalla@protonmail.ch) or reach me in
 [telegram](https://t.me/rvalla) or [mastodon](https://fosstodon.org/@rvalla).
