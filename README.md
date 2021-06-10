@@ -1,4 +1,4 @@
-![icon](https://gitlab.com/rodrigovalla/infectodoppler/-/raw/master/public/assets/img/logo_64.png)
+![icon](https://gitlab.com/azarte/infectodoppler/-/raw/master/public/assets/img/logo_64.png)
 # infectoD o p p l e r
 
 ### what is **infectoDoppler**?
