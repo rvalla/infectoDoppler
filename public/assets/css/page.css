@@ -27,15 +27,6 @@ body {
   margin-bottom: auto;
 }
 
-.column {
-  display: grid;
-  width: 45%;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
 .container-1c, .container-2c, .container-3c {
   display: grid;
   width: 100%;
